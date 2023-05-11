@@ -7,6 +7,7 @@ import pandas as pd
 from config import EnvLoader
 from utils import timeit
 
+
 @timeit
 def get_weather_data(
     api_base: str, api_key: str, city: str, start_date: str, end_date: str
@@ -45,15 +46,7 @@ def main() -> None:
         end_date=env["end_date"],
     )
 
-    df_raw.to_csv(path.join(filepath, "raw.csv"), index=False)
-
-    df_raw[["datetime", "tempmin", "temp", "tempmax"]].to_csv(
-        path.join(filepath, "temperature.csv"), index=False
-    )
-
-    df_raw[["datetime", "description", "icon"]].to_csv(
-        path.join(filepath, "conditions.csv"), index=False
-    )
+    df_raw.to_csv(path.join(filepath, "weather_measures.csv"), index=False)
 
 
 if __name__ == "__main__":
