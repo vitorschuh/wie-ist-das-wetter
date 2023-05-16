@@ -1,0 +1,50 @@
+Table location {
+  location_id int [pk]
+  name varchar
+}
+
+Table data {
+  data_id int [pk]
+  date_time datetime
+  location_id int [ref: > location.location_id]
+}
+
+Table temperature {
+  temperature_id int [pk]
+  data_id int [ref: > data.data_id]
+  temp_max decimal
+  temp_min decimal
+  temp decimal
+}
+
+Table feels_like {
+  feels_like_id int [pk]
+  data_id int [ref: > data.data_id]
+  feels_like_max decimal
+  feels_like_min decimal
+  feels_like decimal
+}
+
+Table precipitation {
+  precipitation_id int [pk]
+  data_id int [ref: > data.data_id]
+  precip decimal
+  precip_prob decimal
+  precip_cover decimal
+  precip_type varchar
+}
+
+Table snow {
+  snow_id int [pk]
+  data_id int [ref: > data.data_id]
+  snow decimal
+  snow_depth decimal
+}
+
+Table wind {
+  wind_id int [pk]
+  data_id int [ref: > data.data_id]
+  wind_gust decimal
+  wind_speed decimal
+  wind_direction varchar
+}
