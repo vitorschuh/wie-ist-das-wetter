@@ -1,0 +1,70 @@
+<database>
+  <table name="location">
+    <column name="location_id" type="int" primaryKey="true" />
+    <column name="name" type="varchar" />
+  </table>
+
+  <table name="data">
+    <column name="data_id" type="int" primaryKey="true" />
+    <column name="date_time" type="datetime" />
+    <column name="location_id" type="int" />
+    <foreign-key foreignTable="location">
+      <reference local="location_id" foreign="location_id" />
+    </foreign-key>
+  </table>
+
+  <table name="temperature">
+    <column name="temperature_id" type="int" primaryKey="true" />
+    <column name="data_id" type="int" />
+    <column name="temp_max" type="decimal" />
+    <column name="temp_min" type="decimal" />
+    <column name="temp" type="decimal" />
+    <foreign-key foreignTable="data">
+      <reference local="data_id" foreign="data_id" />
+    </foreign-key>
+  </table>
+
+  <table name="feels_like">
+    <column name="feels_like_id" type="int" primaryKey="true" />
+    <column name="data_id" type="int" />
+    <column name="feels_like_max" type="decimal" />
+    <column name="feels_like_min" type="decimal" />
+    <column name="feels_like" type="decimal" />
+    <foreign-key foreignTable="data">
+      <reference local="data_id" foreign="data_id" />
+    </foreign-key>
+  </table>
+
+  <table name="precipitation">
+    <column name="precipitation_id" type="int" primaryKey="true" />
+    <column name="data_id" type="int" />
+    <column name="precip" type="decimal" />
+    <column name="precip_prob" type="decimal" />
+    <column name="precip_cover" type="decimal" />
+    <column name="precip_type" type="varchar" />
+    <foreign-key foreignTable="data">
+      <reference local="data_id" foreign="data_id" />
+    </foreign-key>
+  </table>
+
+  <table name="snow">
+    <column name="snow_id" type="int" primaryKey="true" />
+    <column name="data_id" type="int" />
+    <column name="snow" type="decimal" />
+    <column name="snow_depth" type="decimal" />
+    <foreign-key foreignTable="data">
+      <reference local="data_id" foreign="data_id" />
+    </foreign-key>
+  </table>
+
+  <table name="wind">
+    <column name="wind_id" type="int" primaryKey="true" />
+    <column name="data_id" type="int" />
+    <column name="wind_gust" type="decimal" />
+    <column name="wind_speed" type="decimal" />
+    <column name="wind_direction" type="varchar" />
+    <foreign-key foreignTable="data">
+      <reference local="data_id" foreign="data_id" />
+    </foreign-key>
+  </table>
+</database>
